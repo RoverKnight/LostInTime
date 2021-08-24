@@ -15,15 +15,16 @@ public class TemplateView extends MasterView {
     // SETUP
     // =====
 
+    // sets up infrastructure(?) vars
     TemplateListener listener;
     TemplateInternal i;
 
     // sets up style vars
     ButtonUI buttonUI;
 
-    // sets up vars for gui elements
-    JLabel clockLabel;
-    JButton testButton;
+    // sets up vars for gui elements (so they're accessible by listener)
+    JLabel exampleLabel;
+    JButton exampleButton;
 
     // CONSTRUCTOR
     // ===========
@@ -46,11 +47,12 @@ public class TemplateView extends MasterView {
         setCenteredFrameBounds(this, 700, 500);
         setStandardBackground(this);
 
-        // self-explanatory
+        // creates GUI and makes the window visible
         createGUI();
         setVisible(true);
 
-        // creates a clock updater & starts it (must be after createGUI()!)
+        // creates a controller (should be placed after createGUI() to
+        // avoid errors)
         controller = new TemplateController(this);
         controller.start();
 
@@ -62,17 +64,17 @@ public class TemplateView extends MasterView {
     // ============
     public void createGUI () {
         // creates gui elements, assigns to vars
-        clockLabel = new JLabel("00:00", SwingConstants.CENTER);
-        testButton = new JButton("test");
+        exampleLabel = new JLabel("00:00", SwingConstants.CENTER);
+        exampleButton = new JButton("test");
 
         // groups some elements to simplify code
         JButton[] buttons = {
-            testButton
+                exampleButton
         };
 
         // sizes/positions elements
-        setBoundsByCC(clockLabel, 350, 235, 400, 100);
-        setBoundsByCC(testButton, 50, 100, 100, 50);
+        setBoundsByCC(exampleLabel, 350, 235, 400, 100);
+        setBoundsByCC(exampleButton, 50, 100, 100, 50);
 
         // styles / adds listeners to / adds gui elements
         for (JButton button : buttons) {
@@ -80,10 +82,10 @@ public class TemplateView extends MasterView {
             button.addActionListener(listener);
             add(button);
         }
-        clockLabel.setFont(new Font("Ubuntu Mono", Font.BOLD, 40));
+        exampleLabel.setFont(new Font("Ubuntu Mono", Font.BOLD, 40));
 
-        add(clockLabel);
-        add(testButton);
+        add(exampleLabel);
+        add(exampleButton);
 
         // adds general GUI, updates GUI & makes window visible
         addGeneralGUI(this);
