@@ -1,0 +1,30 @@
+DATE CREATED: 20/08/2021
+STARTING IDEA: Make a timer
+
+IDEAS:
+- Merge Internal and Controller by extending Internals from Thread, then using run() for
+  any "live action" (e.g. timer, clock) and for everything else implement static methods
+
+IMPLEMENTATIONS TO DO:
+TODO: implement templates (for copy-paste & reference)
+TODO: add more functionality
+TODO: add lap, log functionality to timer
+  TODO-note:
+FIXES TO DO:
+TODO: stop multiple shutdownConfirm windows form being able to exist simultaneously
+
+TASKS DONE (TODAY):
+- 24/08 - Fixed stop & resume buttons not switching: forgot to fetch the return value
+          from TimerInternal.resumeTimer(), so it wasn't given back to TimerView(), so
+          it's true current status wasn't known to TimerView()
+- 24/08 - Fixed start & reset buttons not switching: a condition for checking if timer
+          is running or has run before was faulty, used isPaused boolean from Controller
+          class even though it is never changed anywhere in the code
+- 24/08 - Refactored TimerView.switch[...]Buttons() methods to .autoSwitch[...]Buttons
+          respectively
+- 24/08 - x
+- 24/08 - x
+- 24/08 - x
+- 24/08 - x
+- 24/08 - x
+- 24/08 - x

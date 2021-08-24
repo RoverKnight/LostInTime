@@ -1,0 +1,33 @@
+- 20/08 - Created project
+- 20/08 - Setup system structure i.e. Master classes & basic interface
+- 20/08 - Added starting window "clock"
+- 20/08 - Added window "shutdownConfirmation"
+- 20/08 - Added working clock to clock window along with ClockUpdater class
+          (subclass of Thread) to manage adjusting it
+- 20/08 - Optimized ClockUpdater class to reduce strain
+- 20/08 - Restructured the way windows are loaded: there now exists a method
+          MasterInternal.loadWindow(String windowType) to manage all
+          window loading actions, rather than having a separate method for
+          each window in MasterInternal()
+
+- 21/08 - Fixed clock running up to 1 minute behind
+- 21/08 - Added MasterUpdater() as superclass of all updaters & implemented
+          a MasterUpdater field in MasterView(), so that MasterInternal()
+          can shut down the windows associated updater when closing it
+- 21/08 - Subordinated internals & listeners to respective Master classes,
+          then realized it doesn't actually provide any function besides
+          the slight convenience of not having to make new
+          view/internal/listener fields in each view/listener class. This
+          however comes at the cost of having to change all constructor-
+          parameters for these classes to their respective Master classes,
+          and requires some casting to be done mainly in the listeners.
+          Therefore, this change was rolled back.
+- 21/08 - Added a basic timer (not yet functional)
+- 21/08 - Added basic start/stop/restart functionality to timer
+
+- 22/08 - Fixed stop/resume button not switching because timer was stopped only after
+          updating GUI by making TimerInternal.stopTimer() wait until thread is dead
+          before returning
+- 22/08 - Added minute field to timer & reworked timer logic, now works smoothly
+
+- 23/08 - Implemented resume functionality to timer
