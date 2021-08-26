@@ -1,4 +1,4 @@
-package program.windows.template;
+package program.windows.randomNumberGenerator;
 
 import program.windows.clock.ClockInternal;
 import program.windows.clock.ClockView;
@@ -9,12 +9,12 @@ import java.awt.event.ActionListener;
 /**
  *
  */
-public class TemplateListener implements ActionListener {
+public class rngListener implements ActionListener {
 
-    TemplateView gui;
-    TemplateInternal i;
+    rngView gui;
+    rngInternal i;
 
-    public TemplateListener(TemplateView gui, TemplateInternal internal) {
+    public rngListener(rngView gui, rngInternal internal) {
         this.gui = gui;
         i = internal;
     }

@@ -4,7 +4,6 @@ import program.windows.clock.ClockInternal;
 import program.windows.clock.ClockView;
 
 public class Main {
-    // starts the program/application
     public static void main (String[] args) {
         // conforms operatingSystemOffset (oso) to OS
         String operatingSystem = System.getProperty("os.name");
