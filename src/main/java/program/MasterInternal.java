@@ -2,6 +2,8 @@ package program;
 
 import program.windows.clock.ClockInternal;
 import program.windows.clock.ClockView;
+import program.windows.randomNumberGenerator.rngInternal;
+import program.windows.randomNumberGenerator.rngView;
 import program.windows.shutdownConfirm.ShutdownConfirmView;
 import program.windows.timer.TimerInternal;
 import program.windows.timer.TimerView;
@@ -40,7 +42,11 @@ public class MasterInternal {
             new ShutdownConfirmView();
             return; // prevents oldWindow from being set to invisible
         }
-        else throw new IllegalArgumentException();
+        else if (windowType.equalsIgnoreCase("rng")) {
+            rngInternal i = new rngInternal();
+            new rngView(i);
+        }
+        else throw new IllegalArgumentException("Window name wrong or not registered");
 
         oldWindow.setVisible(false);
         if (oldWindow.controller != null) oldWindow.controller.interrupt();

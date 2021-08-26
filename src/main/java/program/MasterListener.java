@@ -41,5 +41,8 @@ public class MasterListener implements ActionListener {
         else if (sourceName.equalsIgnoreCase("Timer")) {
             MasterInternal.loadWindow("timer");
         }
+        else if (sourceName.equalsIgnoreCase("RNG")) {
+            MasterInternal.loadWindow("rng");
+        }
     }
 }

@@ -2,9 +2,6 @@ package program.windows.randomNumberGenerator;
 
 import program.MasterView;
 import program.styles.StyledButtonUI;
-import program.windows.clock.ClockController;
-import program.windows.clock.ClockInternal;
-import program.windows.clock.ClockListener;
 
 import javax.swing.*;
 import javax.swing.plaf.ButtonUI;
@@ -21,13 +18,22 @@ public class rngView extends MasterView {
 
     // sets up style vars
     ButtonUI buttonUI;
+    Font ubuntuMonoB40 = new Font("Ubuntu Mono", Font.BOLD, 40);
+    Font ubuntuMonoB30 = new Font("Ubuntu Mono", Font.BOLD, 30);
+    Font ubuntuMonoB20 = new Font("Ubuntu Mono", Font.BOLD, 20);
+    Font getUbuntuMonoI15 = new Font("Ubuntu Mono", Font.ITALIC, 15);
 
     // sets up vars for gui elements
-    JLabel clockLabel;
     JButton testButton;
+    JLabel generatedNumberLabel;
+    JLabel statusLabel;
+    JButton generateNumberButton;
+    JTextField lowBoundInputField;
+    JTextField highBoundInputField;
+    JTextField keyInputField;
 
     public rngView(rngInternal internal) {
-        super("LostInTime - Clock");
+        super("LostInTime - Random Number Generator");
 
         // assigns internal & gives it reference to this frame
         i = internal;
@@ -48,38 +54,59 @@ public class rngView extends MasterView {
         createGUI();
         setVisible(true);
 
-        // creates a clock updater & starts it (must be after createGUI()!)
-        controller = new rngGenerator(this);
-        controller.start();
-
         // tells MasterView() that this is the active window
         activeWindow = this;
     }
 
     public void createGUI () {
         // creates gui elements, assigns to vars
-        clockLabel = new JLabel("00:00", SwingConstants.CENTER);
         testButton = new JButton("Test");
 
+        generatedNumberLabel = new JLabel("Generated random number: ");
+        statusLabel = new JLabel("Status: Inactive");
+        generateNumberButton = new JButton("Generate number");
+        lowBoundInputField = new JTextField("Minimum value");
+        highBoundInputField = new JTextField("Maximum value");
+        keyInputField = new JTextField("Key");
+
         // groups some elements to simplify code
+        JLabel[] labels = {
+                generatedNumberLabel, statusLabel
+        };
         JButton[] buttons = {
-            testButton
+                testButton, generateNumberButton
+        };
+        JTextField[] inputFields = {
+                lowBoundInputField, highBoundInputField,
+                keyInputField
         };
 
         // sizes/positions elements
-        setBoundsByCC(clockLabel, 350, 235, 400, 100);
         setBoundsByBL(testButton, 0, 500, 100, 50);
 
+        setBoundsByTR(generatedNumberLabel, 650, 300, 300, 50);
+        setBoundsByTR(statusLabel,          650, 200, 300, 50);
+        setBoundsByTL(generateNumberButton, 100, 400, 200, 50);
+        setBoundsByTL(lowBoundInputField,   100, 100, 200, 50);
+        setBoundsByTL(highBoundInputField,  100, 200, 200, 50);
+        setBoundsByTL(keyInputField,        100, 300, 200, 50);
+
+
         // styles / adds listeners to / adds gui elements
+        for (JLabel label : labels) {
+            label.setFont(ubuntuMonoB30);
+            add(label);
+        }
         for (JButton button : buttons) {
             button.setUI(buttonUI);
             button.addActionListener(listener);
             add(button);
         }
-        clockLabel.setFont(new Font("Ubuntu Mono", Font.BOLD, 40));
-
-        add(clockLabel);
-        add(testButton);
+        for (JTextField inputField : inputFields) {
+            inputField.addActionListener(listener);
+            inputField.setFont(getUbuntuMonoI15);
+            add(inputField);
+        }
 
         // adds general GUI, updates GUI & makes window visible
         addGeneralGUI(this);
@@ -97,19 +124,6 @@ public class rngView extends MasterView {
     }
 
     public void updateTimedGUI () {
-        updateClock();
-    }
 
-    public void updateClock () {
-        Calendar cal = Calendar.getInstance();
-        String hour = String.valueOf(cal.get(Calendar.HOUR_OF_DAY));
-        String minute = String.valueOf(cal.get(Calendar.MINUTE));
-        String zero = "0";
-
-        if (hour.length() == 1) hour = zero + hour;
-        if (minute.length() == 1) minute = zero + minute;
-
-        String time = hour + ":" + minute;
-        clockLabel.setText(time);
     }
 }

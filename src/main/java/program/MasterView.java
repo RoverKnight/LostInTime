@@ -40,7 +40,7 @@ public class MasterView extends Frame {
         JButton testWindowButton = new JButton("Test");
         JButton topButton3 = new JButton("3");
         JButton topButton4 = new JButton("4");
-        JButton topButton5 = new JButton("5");
+        JButton topButton5 = new JButton("RNG");
         JButton timerWindowButton = new JButton("Timer");
         JButton startWindowButton = new JButton("Clock");
 
@@ -54,11 +54,11 @@ public class MasterView extends Frame {
 
         // sizes/positions GUI elements
         shutdownButton.setBounds(   600, oso, 100, 30);
-        testWindowButton.setBounds(       500, oso, 100, 30);
+        testWindowButton.setBounds( 500, oso, 100, 30);
         topButton3.setBounds(       400, oso, 100, 30);
         topButton4.setBounds(       300, oso, 100, 30);
         topButton5.setBounds(       200, oso, 100, 30);
-        timerWindowButton.setBounds( 100, oso, 100, 30);
+        timerWindowButton.setBounds(100, oso, 100, 30);
         startWindowButton.setBounds(0, oso, 100, 30);
 
         for (JButton button : buttons) {
