@@ -1,7 +1,7 @@
 package program.windows.randomNumberGenerator;
 
-import program.windows.clock.ClockInternal;
-import program.windows.clock.ClockView;
+import program.exceptions.InvalidKeyException;
+import program.exceptions.InvalidRangeException;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,7 +27,9 @@ public class rngListener implements ActionListener {
         // (this window doesn't have text fields)
 
         // source specific code
-
+        if (source == gui.generateNumberButton) {
+            rngInternal.generateRandomNumber(gui);
+        }
 
         // lets input fields keep their input
         // (this window doesn't have text fields)

@@ -1,7 +1,6 @@
 package program.windows.randomNumberGenerator;
 
 import program.MasterController;
-import program.windows.clock.ClockView;
 
 /**
  * Generates the random number. Is a subclass of MasterController(), though
@@ -18,6 +17,7 @@ public class rngGenerator extends MasterController {
     int highBound;
     int key;
     boolean shouldRun = true;
+    public int randomNumber = -1;
 
     public rngGenerator(rngView gui, int lowBound, int highBound, int key) {
         this.gui = gui;
@@ -27,7 +27,11 @@ public class rngGenerator extends MasterController {
     }
 
     public void run () {
-        int randomNumber = -1;
+
+        rngController loadingAnimator = new rngController(gui, this);
+        loadingAnimator.setPriority(1);
+        this.setPriority(2);
+        loadingAnimator.start();
 
         long startTime = System.currentTimeMillis();
 
@@ -35,7 +39,7 @@ public class rngGenerator extends MasterController {
             for (int i = lowBound; i <= highBound; i++) {
                 System.out.println(i);
                 try {
-                    Thread.sleep(1); // cuz 7 is prime..?
+                    Thread.sleep(7);
                     randomNumber = i;
                 } catch (InterruptedException ignored) {
                     System.out.println("Fuck");
@@ -49,8 +53,10 @@ public class rngGenerator extends MasterController {
                 }
             }
         }
+    }
 
-        x.randomNumber = randomNumber;
+    public int getGeneratedNumber () {
+        return randomNumber;
     }
 
     public static long getCrossSum (int number) {

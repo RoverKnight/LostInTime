@@ -6,7 +6,6 @@ import program.styles.StyledButtonUI;
 import javax.swing.*;
 import javax.swing.plaf.ButtonUI;
 import java.awt.*;
-import java.util.Calendar;
 
 /**
  *
@@ -18,14 +17,12 @@ public class rngView extends MasterView {
 
     // sets up style vars
     ButtonUI buttonUI;
-    Font ubuntuMonoB40 = new Font("Ubuntu Mono", Font.BOLD, 40);
-    Font ubuntuMonoB30 = new Font("Ubuntu Mono", Font.BOLD, 30);
-    Font ubuntuMonoB20 = new Font("Ubuntu Mono", Font.BOLD, 20);
+    Font ubuntuMonoB25 = new Font("Ubuntu Mono", Font.BOLD, 25);
     Font getUbuntuMonoI15 = new Font("Ubuntu Mono", Font.ITALIC, 15);
 
     // sets up vars for gui elements
     JButton testButton;
-    JLabel generatedNumberLabel;
+    JLabel resultLabel;
     JLabel statusLabel;
     JButton generateNumberButton;
     JTextField lowBoundInputField;
@@ -62,7 +59,7 @@ public class rngView extends MasterView {
         // creates gui elements, assigns to vars
         testButton = new JButton("Test");
 
-        generatedNumberLabel = new JLabel("Generated random number: ");
+        resultLabel = new JLabel("Result: n/a");
         statusLabel = new JLabel("Status: Inactive");
         generateNumberButton = new JButton("Generate number");
         lowBoundInputField = new JTextField("Minimum value");
@@ -71,7 +68,7 @@ public class rngView extends MasterView {
 
         // groups some elements to simplify code
         JLabel[] labels = {
-                generatedNumberLabel, statusLabel
+                resultLabel, statusLabel
         };
         JButton[] buttons = {
                 testButton, generateNumberButton
@@ -84,8 +81,8 @@ public class rngView extends MasterView {
         // sizes/positions elements
         setBoundsByBL(testButton, 0, 500, 100, 50);
 
-        setBoundsByTR(generatedNumberLabel, 650, 300, 300, 50);
-        setBoundsByTR(statusLabel,          650, 200, 300, 50);
+        setBoundsByTR(resultLabel, 650, 200, 300, 50);
+        setBoundsByTR(statusLabel,          650, 100, 300, 50);
         setBoundsByTL(generateNumberButton, 100, 400, 200, 50);
         setBoundsByTL(lowBoundInputField,   100, 100, 200, 50);
         setBoundsByTL(highBoundInputField,  100, 200, 200, 50);
@@ -94,7 +91,7 @@ public class rngView extends MasterView {
 
         // styles / adds listeners to / adds gui elements
         for (JLabel label : labels) {
-            label.setFont(ubuntuMonoB30);
+            label.setFont(ubuntuMonoB25);
             add(label);
         }
         for (JButton button : buttons) {
@@ -112,6 +109,14 @@ public class rngView extends MasterView {
         addGeneralGUI(this);
         updateGUI();
         setVisible(true);
+    }
+
+    public void setStatus (String status) {
+        statusLabel.setText("Status: " + status);
+    }
+
+    public void setResult (String result) {
+        resultLabel.setText("Result: " + result);
     }
 
     public void updateGUI () {
