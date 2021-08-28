@@ -88,7 +88,7 @@ public class TimerView extends MasterView {
             button.addActionListener(listener);
             add(button);
         }
-        timerLabel.setFont(new Font("Ubuntu Mono", Font.BOLD, 40));
+        timerLabel.setFont(ubuntuMonoB40);
         add(timerLabel);
 
         // adds general GUI, updates GUI & makes window visible

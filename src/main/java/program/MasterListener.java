@@ -32,7 +32,7 @@ public class MasterListener implements ActionListener {
 
         // text from buttons is used here because their variable names
         // are inaccessible
-        if (sourceName.equalsIgnoreCase("Shut down")) {
+        if (sourceName.equalsIgnoreCase("Shut down") && !MasterView.shutdownWindowActive) {
             MasterInternal.loadWindow("shutdownConfirmation");
         }
         else if (sourceName.equalsIgnoreCase("Clock")) {
@@ -43,6 +43,12 @@ public class MasterListener implements ActionListener {
         }
         else if (sourceName.equalsIgnoreCase("RNG")) {
             MasterInternal.loadWindow("rng");
+        }
+        else if (sourceName.equalsIgnoreCase("File Writer")) {
+            MasterInternal.loadWindow("file writer");
+        }
+        else if (sourceName.equalsIgnoreCase("Test")) {
+            MasterInternal.loadWindow("test");
         }
     }
 }

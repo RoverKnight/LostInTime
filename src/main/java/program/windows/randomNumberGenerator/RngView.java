@@ -5,20 +5,17 @@ import program.styles.StyledButtonUI;
 
 import javax.swing.*;
 import javax.swing.plaf.ButtonUI;
-import java.awt.*;
 
 /**
  *
  */
-public class rngView extends MasterView {
+public class RngView extends MasterView {
 
-    rngListener listener;
-    rngInternal i;
+    RngListener listener;
+    RngInternal i;
 
     // sets up style vars
     ButtonUI buttonUI;
-    Font ubuntuMonoB25 = new Font("Ubuntu Mono", Font.BOLD, 25);
-    Font getUbuntuMonoI15 = new Font("Ubuntu Mono", Font.ITALIC, 15);
 
     // sets up vars for gui elements
     JButton testButton;
@@ -29,7 +26,7 @@ public class rngView extends MasterView {
     JTextField highBoundInputField;
     JTextField keyInputField;
 
-    public rngView(rngInternal internal) {
+    public RngView(RngInternal internal) {
         super("LostInTime - Random Number Generator");
 
         // assigns internal & gives it reference to this frame
@@ -37,7 +34,7 @@ public class rngView extends MasterView {
         i.gui = this;
 
         // creates the listener instance
-        listener = new rngListener(this, i);
+        listener = new RngListener(this, i);
 
         // assigns styles to vars
         buttonUI = new StyledButtonUI();
@@ -101,7 +98,7 @@ public class rngView extends MasterView {
         }
         for (JTextField inputField : inputFields) {
             inputField.addActionListener(listener);
-            inputField.setFont(getUbuntuMonoI15);
+            inputField.setFont(ubuntuMonoI15);
             add(inputField);
         }
 

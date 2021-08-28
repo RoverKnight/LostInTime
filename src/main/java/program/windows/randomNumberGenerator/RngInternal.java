@@ -7,11 +7,11 @@ import program.exceptions.InvalidRangeException;
 /**
  *
  */
-public class rngInternal {
+public class RngInternal {
 
-    public rngView gui;
+    public RngView gui;
 
-    public static void generateRandomNumber (rngView gui) {
+    public static void generateRandomNumber (RngView gui) {
         int[] inputs;
         try {
             inputs = getInputs(gui);
@@ -28,14 +28,14 @@ public class rngInternal {
 
         gui.setStatus("Generating...");
 
-        rngGenerator random = new rngGenerator(gui, inputs[0], inputs[1], inputs[2]);
+        RngGenerator random = new RngGenerator(gui, inputs[0], inputs[1], inputs[2]);
         random.start();
         while (random.isAlive()) {}
         String generatedNumber = String.valueOf(random.getGeneratedNumber());
         gui.setResult(generatedNumber);
     }
 
-    public static int[] getInputs (rngView gui) throws NumberFormatException, InvalidRangeException, InvalidKeyException {
+    public static int[] getInputs (RngView gui) throws NumberFormatException, InvalidRangeException, InvalidKeyException {
         int lowBound;
         int highBound;
         long keyL; // uses long here to catch if user entered key w/ more than 6 digits, as detecting this fails

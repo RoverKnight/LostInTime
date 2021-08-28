@@ -4,22 +4,22 @@ import program.MasterController;
 
 /**
  * Generates the random number. Is a subclass of MasterController(), though
- * is not named rngController, to make it clear that this class generates
- * the random number, not rngInternal(). This is also because this class
+ * is not named RngController, to make it clear that this class generates
+ * the random number, not RngInternal(). This is also because this class
  * does not fulfill the typical role of a controller in the sense in which
  * that term is used within this project. The reason behind making
- * rngGenerator() a subclass of MasterController() is for convenience mostly.
+ * RngGenerator() a subclass of MasterController() is for convenience mostly.
  */
-public class rngGenerator extends MasterController {
+public class RngGenerator extends MasterController {
 
-    rngView gui;
+    RngView gui;
     int lowBound;
     int highBound;
     int key;
     boolean shouldRun = true;
     public int randomNumber = -1;
 
-    public rngGenerator(rngView gui, int lowBound, int highBound, int key) {
+    public RngGenerator(RngView gui, int lowBound, int highBound, int key) {
         this.gui = gui;
         this.lowBound = lowBound;
         this.highBound = highBound;
@@ -28,7 +28,7 @@ public class rngGenerator extends MasterController {
 
     public void run () {
 
-        rngController loadingAnimator = new rngController(gui, this);
+        RngController loadingAnimator = new RngController(gui, this);
         loadingAnimator.setPriority(1);
         this.setPriority(2);
         loadingAnimator.start();

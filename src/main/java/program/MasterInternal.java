@@ -2,9 +2,11 @@ package program;
 
 import program.windows.clock.ClockInternal;
 import program.windows.clock.ClockView;
-import program.windows.randomNumberGenerator.rngInternal;
-import program.windows.randomNumberGenerator.rngView;
+import program.windows.randomNumberGenerator.RngInternal;
+import program.windows.randomNumberGenerator.RngView;
 import program.windows.shutdownConfirm.ShutdownConfirmView;
+import program.windows.test.TestInternal;
+import program.windows.test.TestView;
 import program.windows.timer.TimerInternal;
 import program.windows.timer.TimerView;
 
@@ -43,8 +45,16 @@ public class MasterInternal {
             return; // prevents oldWindow from being set to invisible
         }
         else if (windowType.equalsIgnoreCase("rng")) {
-            rngInternal i = new rngInternal();
-            new rngView(i);
+            RngInternal i = new RngInternal();
+            new RngView(i);
+        }
+        else if (windowType.equalsIgnoreCase("test")) {
+            TestInternal i = new TestInternal();
+            new TestView(i);
+        }
+        else if (windowType.equalsIgnoreCase("file writer")) {
+            TestInternal i = new TestInternal();
+            new TestView(i);
         }
         else throw new IllegalArgumentException("Window name wrong or not registered");
 

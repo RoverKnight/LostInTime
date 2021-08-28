@@ -2,12 +2,12 @@ package program.windows.randomNumberGenerator;
 
 import program.MasterController;
 
-public class rngController extends MasterController {
+public class RngController extends MasterController {
 
-    rngView gui;
-    rngGenerator generator;
+    RngView gui;
+    RngGenerator generator;
 
-    public rngController (rngView gui, rngGenerator generator) {
+    public RngController(RngView gui, RngGenerator generator) {
         this.gui = gui;
         this.generator = generator;
     }

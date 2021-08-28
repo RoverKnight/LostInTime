@@ -40,3 +40,8 @@
           class even though it is never changed anywhere in the code
 - 24/08 - Refactored TimerView.switch[...]Buttons() methods to .autoSwitch[...]Buttons
           respectively
+
+- 26/08 - implemented new exception classes for input retrieval (also it's cool)
+- 26/08 - successfully implemented rng input retrieval
+- 26/08 - successfully implemented imported random number generator
+

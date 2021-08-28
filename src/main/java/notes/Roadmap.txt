@@ -8,13 +8,10 @@ TODO: add more functionality
 TODO: add lap, log functionality to timer
 
 FIXES TO DO:
-TODO: stop multiple shutdownConfirm windows form being able to exist simultaneously
 
 TASKS DONE (TODAY):
-- 26/08 - implemented new exception classes for input retrieval (also it's cool)
-- 26/08 - successfully implemented rng input retrieval
-- 26/08 - successfully implemented imported random number generator
-- 26/08 - x
-- 26/08 - x
-- 26/08 - x
-- 26/08 - x
+- 28/08 - Removed imported rng classes ("x" & "ThreadGoBrrrr")
+- 28/08 - Standardized fonts by making Font vars in MasterView()
+- 28/08 - Implemented a shutdownConfirm window block if such a window is already
+          active (i.e. there can now only be up to 1 shutdownConfirm window)
+- 28/08 - x

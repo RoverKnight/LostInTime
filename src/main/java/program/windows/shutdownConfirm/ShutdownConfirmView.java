@@ -23,6 +23,8 @@ public class ShutdownConfirmView extends MasterView {
         // creates window
         super("LostInTime - Confirm Shutdown");
 
+        shutdownWindowActive = true;
+
         // creates/assigns the listener instance
         listener = new ShutdownConfirmListener(this);
 

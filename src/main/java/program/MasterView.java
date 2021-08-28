@@ -21,7 +21,19 @@ public class MasterView extends Frame {
      */
     public static int oso;
 
+    public static boolean shutdownWindowActive = false;
+
     public MasterController controller;
+
+    // Fonts for use mostly in subclasses
+    public Font ubuntuMonoB40 = new Font("Ubuntu Mono", Font.BOLD, 40);
+    public Font ubuntuMonoB35 = new Font("Ubuntu Mono", Font.BOLD, 35);
+    public Font ubuntuMonoB30 = new Font("Ubuntu Mono", Font.BOLD, 30);
+    public Font ubuntuMonoB25 = new Font("Ubuntu Mono", Font.BOLD, 25);
+    public Font ubuntuMonoB20 = new Font("Ubuntu Mono", Font.BOLD, 20);
+    public Font ubuntuMonoB15 = new Font("Ubuntu Mono", Font.BOLD, 15);
+    public Font ubuntuMonoB10 = new Font("Ubuntu Mono", Font.BOLD, 10);
+    public Font ubuntuMonoI15 = new Font("Ubuntu Mono", Font.ITALIC, 15);
 
     public static MasterView activeWindow;
 
@@ -39,27 +51,27 @@ public class MasterView extends Frame {
         JButton shutdownButton = new JButton("Shut down");
         JButton testWindowButton = new JButton("Test");
         JButton topButton3 = new JButton("3");
-        JButton topButton4 = new JButton("4");
-        JButton topButton5 = new JButton("RNG");
+        JButton fileWriterWindowButton = new JButton("File Writer");
+        JButton rngWindowButton = new JButton("RNG");
         JButton timerWindowButton = new JButton("Timer");
         JButton startWindowButton = new JButton("Clock");
 
         // groups some elements to simplify code
         JButton[] buttons = {
                 shutdownButton, testWindowButton, topButton3,
-                topButton4, topButton5, timerWindowButton,
+                fileWriterWindowButton, rngWindowButton, timerWindowButton,
                 startWindowButton
         };
 
 
         // sizes/positions GUI elements
-        shutdownButton.setBounds(   600, oso, 100, 30);
-        testWindowButton.setBounds( 500, oso, 100, 30);
-        topButton3.setBounds(       400, oso, 100, 30);
-        topButton4.setBounds(       300, oso, 100, 30);
-        topButton5.setBounds(       200, oso, 100, 30);
-        timerWindowButton.setBounds(100, oso, 100, 30);
-        startWindowButton.setBounds(0, oso, 100, 30);
+        shutdownButton.setBounds(           600, oso, 100, 30);
+        testWindowButton.setBounds(         500, oso, 100, 30);
+        topButton3.setBounds(               400, oso, 100, 30);
+        fileWriterWindowButton.setBounds(   300, oso, 100, 30);
+        rngWindowButton.setBounds(          200, oso, 100, 30);
+        timerWindowButton.setBounds(        100, oso, 100, 30);
+        startWindowButton.setBounds(        0, oso, 100, 30);
 
         for (JButton button : buttons) {
             button.addActionListener(listener);
@@ -133,31 +145,6 @@ public class MasterView extends Frame {
         int y = screenHeight/2 - heightWOutOSO/2;
 
         int height = heightWOutOSO + oso;
-
-        gui.setBounds(x, y, width, height);
-    }
-
-    @Deprecated // just can't make it work... should make center of new window same as center of previous window
-    public static void setAdjustedFrameBounds (Frame gui, int width, int heightWOutOSO) {
-
-        // NOTE: this method currently does not work as intended because the x/y coordinates of the previous
-        // window are not updated as it is moved around
-
-        System.out.println(activeWindow);
-
-        int previousWindowWidth = activeWindow.getWidth();
-        int previousWindowHeight = activeWindow.getHeight();
-        int previousWindowX = activeWindow.getX();
-        int previousWindowY = activeWindow.getY();
-
-        int x = previousWindowX + previousWindowWidth/2 - width/2;
-        int y = previousWindowY + previousWindowHeight/2 - heightWOutOSO/2;
-        int height = heightWOutOSO + oso;
-
-        System.out.println(previousWindowX);
-        System.out.println(previousWindowY);
-        System.out.println(x);
-        System.out.println(y);
 
         gui.setBounds(x, y, width, height);
     }

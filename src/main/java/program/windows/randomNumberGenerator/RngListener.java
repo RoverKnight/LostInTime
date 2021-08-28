@@ -1,20 +1,17 @@
 package program.windows.randomNumberGenerator;
 
-import program.exceptions.InvalidKeyException;
-import program.exceptions.InvalidRangeException;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
  *
  */
-public class rngListener implements ActionListener {
+public class RngListener implements ActionListener {
 
-    rngView gui;
-    rngInternal i;
+    RngView gui;
+    RngInternal i;
 
-    public rngListener(rngView gui, rngInternal internal) {
+    public RngListener(RngView gui, RngInternal internal) {
         this.gui = gui;
         i = internal;
     }
@@ -28,7 +25,7 @@ public class rngListener implements ActionListener {
 
         // source specific code
         if (source == gui.generateNumberButton) {
-            rngInternal.generateRandomNumber(gui);
+            RngInternal.generateRandomNumber(gui);
         }
 
         // lets input fields keep their input

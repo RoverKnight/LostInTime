@@ -26,6 +26,7 @@ public class ShutdownConfirmListener implements ActionListener {
         }
         else if (source == gui.goBackButton) {
             gui.setVisible(false);
+            gui.shutdownWindowActive = false;
         }
 
         // updates the GUI
