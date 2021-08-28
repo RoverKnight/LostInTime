@@ -28,8 +28,7 @@ public class TestListener implements ActionListener {
 
         // source specific code
         if (source == gui.testButton) {
-            TestController controller = new TestController(gui);
-            controller.start();
+            TestInternal.test();
         }
 
         // updates GUI (important!!!)

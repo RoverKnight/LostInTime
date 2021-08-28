@@ -2,6 +2,8 @@ package program;
 
 import program.windows.clock.ClockInternal;
 import program.windows.clock.ClockView;
+import program.windows.fileWriter.FileWriterInternal;
+import program.windows.fileWriter.FileWriterView;
 import program.windows.randomNumberGenerator.RngInternal;
 import program.windows.randomNumberGenerator.RngView;
 import program.windows.shutdownConfirm.ShutdownConfirmView;
@@ -53,8 +55,8 @@ public class MasterInternal {
             new TestView(i);
         }
         else if (windowType.equalsIgnoreCase("file writer")) {
-            TestInternal i = new TestInternal();
-            new TestView(i);
+            FileWriterInternal i = new FileWriterInternal();
+            new FileWriterView(i);
         }
         else throw new IllegalArgumentException("Window name wrong or not registered");
 

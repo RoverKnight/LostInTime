@@ -10,7 +10,7 @@ public class TimerListener implements ActionListener {
 
     TimerView gui;
     TimerInternal i;
-    TimerController controller = null; // TODO: rename to timer (maybe even whole class)?
+    TimerController controller = null;
 
     public TimerListener(TimerView gui, TimerInternal internal) {
         this.gui = gui;

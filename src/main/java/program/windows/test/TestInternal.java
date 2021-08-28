@@ -9,6 +9,8 @@ public class TestInternal {
 
     public TestView gui;
 
+    public static void test () {
 
+    }
 
 }
