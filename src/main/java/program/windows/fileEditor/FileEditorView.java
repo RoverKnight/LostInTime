@@ -1,4 +1,4 @@
-package program.windows.fileWriter;
+package program.windows.fileEditor;
 
 import program.MasterView;
 import program.styles.StyledButtonUI;
@@ -9,10 +9,10 @@ import javax.swing.plaf.ButtonUI;
 /**
  *
  */
-public class FileWriterView extends MasterView {
+public class FileEditorView extends MasterView {
 
-    FileWriterListener listener;
-    FileWriterInternal i;
+    FileEditorListener listener;
+    FileEditorInternal i;
 
     // sets up style vars
     ButtonUI buttonUI;
@@ -28,7 +28,7 @@ public class FileWriterView extends MasterView {
     JTextArea fileContentTextArea;
     JTextArea consoleFeedbackTextArea;
 
-    public FileWriterView(FileWriterInternal internal) {
+    public FileEditorView(FileEditorInternal internal) {
         super("LostInTime - File Writer");
 
         // assigns internal & gives it reference to this frame
@@ -36,7 +36,7 @@ public class FileWriterView extends MasterView {
         i.gui = this;
 
         // creates the listener instance
-        listener = new FileWriterListener(this, i);
+        listener = new FileEditorListener(this, i);
 
         // assigns styles to vars
         buttonUI = new StyledButtonUI();
@@ -58,10 +58,10 @@ public class FileWriterView extends MasterView {
         // creates gui elements, assigns to vars
         saveButton = new JButton("Save");
         loadButton = new JButton("Load");
-        filePathTextField = new JTextField("/home/goose/Data/Random_Bullshit");
-        fileNameTextField = new JTextField("ButterBrick");
-        fileSuffixTextField = new JTextField(".txt");
-        fileContentTextArea = new JTextArea("File content");
+        filePathTextField = new JTextField("File Path");
+        fileNameTextField = new JTextField("File Name");
+        fileSuffixTextField = new JTextField("File Suffix (e.g. txt)");
+        fileContentTextArea = new JTextArea("File Content");
         consoleFeedbackTextArea = new JTextArea("Console feedback");
 
         // groups some elements to simplify code

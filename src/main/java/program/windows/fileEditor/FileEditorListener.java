@@ -1,20 +1,17 @@
-package program.windows.fileWriter;
-
-import program.windows.test.TestInternal;
+package program.windows.fileEditor;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 /**
  *
  */
-public class FileWriterListener implements ActionListener {
+public class FileEditorListener implements ActionListener {
 
-    FileWriterView gui;
-    FileWriterInternal i;
+    FileEditorView gui;
+    FileEditorInternal i;
 
-    public FileWriterListener(FileWriterView gui, FileWriterInternal internal) {
+    public FileEditorListener(FileEditorView gui, FileEditorInternal internal) {
         this.gui = gui;
         i = internal;
         i.gui = gui;
@@ -29,10 +26,10 @@ public class FileWriterListener implements ActionListener {
 
         // source specific code
         if (source == gui.saveButton) {
-            FileWriterInternal.save();
+            FileEditorInternal.save();
         }
         else if (source == gui.loadButton) {
-            FileWriterInternal.load();
+            FileEditorInternal.load();
         }
 
         // updates GUI (important!!!)

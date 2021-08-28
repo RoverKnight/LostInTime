@@ -1,6 +1,4 @@
-package program.windows.fileWriter;
-
-import program.windows.test.TestView;
+package program.windows.fileEditor;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,9 +11,9 @@ import java.util.Scanner;
 /**
  *
  */
-public class FileWriterInternal {
+public class FileEditorInternal {
 
-    public static FileWriterView gui;
+    public static FileEditorView gui;
 
     public static void test () {
 

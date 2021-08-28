@@ -51,7 +51,7 @@ public class MasterView extends Frame {
         JButton shutdownButton = new JButton("Shut down");
         JButton testWindowButton = new JButton("Test");
         JButton topButton3 = new JButton("3");
-        JButton fileWriterWindowButton = new JButton("File Writer");
+        JButton fileWriterWindowButton = new JButton("File Editor");
         JButton rngWindowButton = new JButton("RNG");
         JButton timerWindowButton = new JButton("Timer");
         JButton startWindowButton = new JButton("Clock");
