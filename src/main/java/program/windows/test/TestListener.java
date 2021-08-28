@@ -12,11 +12,9 @@ import java.awt.event.ActionListener;
 public class TestListener implements ActionListener {
 
     TestView gui;
-    TestInternal i;
 
-    public TestListener(TestView gui, TestInternal internal) {
+    public TestListener(TestView gui) {
         this.gui = gui;
-        i = internal;
     }
 
     public void actionPerformed (ActionEvent e) {

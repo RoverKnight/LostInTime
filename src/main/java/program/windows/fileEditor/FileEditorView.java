@@ -102,21 +102,7 @@ public class FileEditorView extends MasterView {
 
         // adds general GUI, updates GUI & makes window visible
         addGeneralGUI(this);
-        updateGUI();
         setVisible(true);
-    }
-
-    public void updateGUI () {
-        updateResponsiveGUI();
-        updateTimedGUI();
-    }
-
-    public void updateResponsiveGUI () {
-
-    }
-
-    public void updateTimedGUI () {
-
     }
 
     public void writeToConsole (String text) {

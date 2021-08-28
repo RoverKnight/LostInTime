@@ -13,7 +13,6 @@ import java.awt.*;
 public class TestView extends MasterView {
 
     TestListener listener;
-    TestInternal i;
 
     // sets up style vars
     ButtonUI buttonUI;
@@ -23,15 +22,11 @@ public class TestView extends MasterView {
     JButton testButton;
     JTextField testInputField;
 
-    public TestView(TestInternal internal) {
+    public TestView() {
         super("LostInTime - Test");
 
-        // assigns internal & gives it reference to this frame
-        i = internal;
-        i.gui = this;
-
         // creates the listener instance
-        listener = new TestListener(this, i);
+        listener = new TestListener(this);
 
         // assigns styles to vars
         buttonUI = new StyledButtonUI();

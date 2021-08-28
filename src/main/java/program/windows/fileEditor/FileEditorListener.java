@@ -31,8 +31,5 @@ public class FileEditorListener implements ActionListener {
         else if (source == gui.loadButton) {
             FileEditorInternal.load();
         }
-
-        // updates GUI (important!!!)
-        gui.updateGUI();
     }
 }

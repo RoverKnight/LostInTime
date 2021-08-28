@@ -51,8 +51,7 @@ public class MasterInternal {
             new RngView(i);
         }
         else if (windowType.equalsIgnoreCase("test")) {
-            TestInternal i = new TestInternal();
-            new TestView(i);
+            new TestView();
         }
         else if (windowType.equalsIgnoreCase("file editor")) {
             FileEditorInternal i = new FileEditorInternal();

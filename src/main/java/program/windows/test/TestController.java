@@ -13,5 +13,6 @@ public class TestController extends MasterController {
 
     public void run () {
         System.out.println("Yahtzee");
+
     }
 }
