@@ -7,14 +7,14 @@ IDEAS:
   of the inputs caused an IO exception, then tells user
 
 IMPLEMENTATIONS TO DO:
-TODO: add more functionality
 TODO: add lap, log functionality to timer
 TODO: implement file writer functionality
 TODO: implement scroll bar for file content to file writer
 TODO: (for file content @ file writer) implement automatic line break
       when edge is reached (or alternatively a horizontal scroll bar,
       additionally a button to switch auto-line-break on/off?)
-TODO? account for OS differences in file writer functionality (?)
+TODO? account for OS differences in file writer functionality (specifically
+      file pathing in windows)
 
 FIXES/REWORKS TO DO:
 TODO: remove parameter for window internal from listener (all methods
@@ -25,10 +25,6 @@ TODO? remove FileWriterController(), since file writer window has no
 TODO: fix rng status label not updating when generating number
 
 TASKS DONE (TODAY):
-- 28/08 - Removed imported rng classes ("x" & "ThreadGoBrrrr")
-- 28/08 - Standardized fonts by making Font vars in MasterView()
-- 28/08 - Implemented a shutdownConfirm window block if such a window is already
-          active (i.e. there can now only be up to 1 shutdownConfirm window)
-- 28/08 - Crudely implemented a new "FileWriter" window, which should eventually be
-          able to function as a bare-bone text file creator/editor (note that only
-          the GUI has been implemented so far, there is no functionality yet)
+- 29/09 - x
+- 29/09 - x
+- 29/09 - x

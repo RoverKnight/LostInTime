@@ -45,3 +45,11 @@
 - 26/08 - successfully implemented rng input retrieval
 - 26/08 - successfully implemented imported random number generator
 
+- 28/08 - Removed imported rng classes ("x" & "ThreadGoBrrrr")
+- 28/08 - Standardized fonts by making Font vars in MasterView()
+- 28/08 - Implemented a shutdownConfirm window block if such a window is already
+          active (i.e. there can now only be up to 1 shutdownConfirm window)
+- 28/08 - Crudely implemented a new "FileWriter" window, which should eventually be
+          able to function as a bare-bone text file creator/editor (note that only
+          the GUI has been implemented so far, there is no functionality yet)
+

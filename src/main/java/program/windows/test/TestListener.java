@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- *
+ * Listener class - for testing & copy/pasting purposes
  */
 public class TestListener implements ActionListener {
 
@@ -22,7 +22,7 @@ public class TestListener implements ActionListener {
         Object source = e.getSource();
 
         // gets all text field inputs
-        String inputField = gui.testInputField.getText();
+        String testInput = gui.testInputField.getText();
 
         // source specific code
         if (source == gui.testButton) {

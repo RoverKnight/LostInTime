@@ -8,7 +8,7 @@ import javax.swing.plaf.ButtonUI;
 import java.awt.*;
 
 /**
- *
+ * Graphical interface class - for testing & copy/pasting purposes
  */
 public class TestView extends MasterView {
 
