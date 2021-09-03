@@ -16,35 +16,41 @@ public class FileEditorInternal {
     public static FileEditorView gui;
 
     public static void test () {
+        System.out.println("test");
+    }
 
+    public static String[] fetchInputs () {
+        String fileName = gui.fileNameTextField.getText();
+        String path = gui.filePathTextField.getText();
+        String fileSuffix = gui.fileSuffixTextField.getText();
+
+        if (!path.endsWith("/")) path += "/";
+        if (!fileSuffix.startsWith(".") && !fileSuffix.isBlank()) fileSuffix = "." + fileSuffix;
+
+        String fullPath = path + fileName + fileSuffix;
+
+        return new String[]{fileName, fileSuffix, fullPath};
     }
 
     public static void save () {
-        // fetches inputs
-        String fileName = gui.fileNameTextField.getText();
-        String path = gui.filePathTextField.getText();
-        if (!path.endsWith("/")) path += "/";
-        String fileSuffix = gui.fileSuffixTextField.getText();
-        if (!fileSuffix.startsWith(".") && !fileSuffix.isBlank()) fileSuffix = "." + fileSuffix;
-        String fullPath = path + fileName + fileSuffix;
+        String[] inputs = fetchInputs();
+        String fileName = inputs[0];
+        String fileSuffix = inputs[1];
+        String fullPath = inputs[2];
 
         // creates file var
         File file = new File(fullPath);
 
         // checks if file already exists (throws IOException if the provided directory
         // doesn't exist)
+        boolean fileAlreadyExists;
         try {
-            boolean fileAlreadyExists = file.createNewFile();
-            if (fileAlreadyExists) {
-                gui.writeToConsole("File created.");
-            } else {
-                gui.writeToConsole("File already exists.");
-            }
+            fileAlreadyExists = file.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
             gui.writeToConsole(
-                    "IO Exception occurred while fetching inputs. Please check if the" +
-                    "entered directory exists and if the given file suffix is valid."
+                    "IO Exception occurred while fetching inputs. Please check if the " +
+                    "entered directory exists and if the file suffix is valid."
             );
             return;
         }
@@ -54,9 +60,13 @@ public class FileEditorInternal {
             FileWriter writer = new FileWriter(fullPath);
             writer.write(gui.fileContentTextArea.getText());
             writer.close();
-            gui.writeToConsole("Successfully edited " + fileName + fileSuffix);
+
+            if (fileAlreadyExists) {
+                gui.writeToConsole("Successfully created file "+fileName+fileSuffix+".");
+            } else {
+                gui.writeToConsole("Successfully edited " + fileName + fileSuffix);
+            }
         } catch (IOException e) {
-            e.printStackTrace();
             gui.writeToConsole("IO Exception occurred while writing to file");
         }
 
@@ -65,33 +75,106 @@ public class FileEditorInternal {
 
     public static void load () {
         // fetches inputs
-        String fileName = gui.fileNameTextField.getText();
-        String path = gui.filePathTextField.getText();
-        if (!path.endsWith("/")) path += "/";
-        String fileSuffix = gui.fileSuffixTextField.getText();
-        if (!fileSuffix.startsWith(".") && !fileSuffix.isBlank()) fileSuffix = "." + fileSuffix;
-        String fullPath = path + fileName + fileSuffix;
+        String[] inputs = fetchInputs();
+        String fileName = inputs[0];
+        String fileSuffix = inputs[1];
+        String fullPath = inputs[2];
+
         // creates file var
         File file = new File(fullPath);
 
         //
         try {
             Scanner reader = new Scanner(file);
-            List<String> contentList = new ArrayList<>();
             String contentStr = "";
             while (reader.hasNextLine()) {
-                //contentList.add(reader.nextLine());
                 contentStr += reader.nextLine() + System.lineSeparator();
             }
             gui.fileContentTextArea.setText(contentStr);
-            System.out.println(contentStr);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
             gui.writeToConsole(
-                    "File could not be found. Check if the entered directory, file name and" +
+                    "File could not be found. Check if the entered directory, file name and " +
                     "file suffix are correct."
             );
         }
+    }
+
+    public static String convertWithLineBreaks (String text, int maxCharsPerLine) {
+        char[] charArray = text.toCharArray();
+        List<Character> charList = new ArrayList<>();
+        for (int i = 0; i < charArray.length; i++) {
+            charList.add(charArray[i]);
+        }
+        List<String> adjustedText = new ArrayList<>();
+
+        int iterationCounter = 0; // used to prevent infinite looping (used in development)
+
+        int length = charList.size();
+        int ogLength = length;
+
+        // adds line breaks
+        while (length > maxCharsPerLine) {
+            boolean foundBreak = false;
+            while (!foundBreak) {
+                for (int i = maxCharsPerLine; i >= 0; i--) {
+                    //System.out.println(charList.size());
+                    if (charList.get(i) == 32) {   // if character is a space
+                        charList.set(i, (char) 10);      // replaces it with linefeed/-break
+
+                        // gets the singular line & adds to final output
+                        char[] lineChars = new char[i+1];
+                        for (int x = 0; x < i+1; x++) {
+                            lineChars[x] = charList.get(x);
+                        }
+                        adjustedText.add(new String(lineChars));
+
+                        //System.out.println("ITERATION #: "+iterationCounter);
+
+                        // deletes the just processed line from workload
+                        for (int n = i; n >= 0; n--) {
+                            charList.remove(0);
+                            //System.out.println("This is trash man numero "+n);
+                        }
+
+                        // updates length (possible exit condition)
+                        length = charList.size();
+
+                        // sets exit condition
+                        foundBreak = true;
+
+                        break;
+                    }
+                    else if (charList.get(i) == 10) break; // this stops new linebreaks from being added
+                                                           // every time load button is clicked
+                }
+                iterationCounter++;
+                if (iterationCounter > charList.size()) break;
+            }
+            if (iterationCounter > charList.size()) break;
+        }
+
+        /*
+        String nl = System.lineSeparator();
+        System.out.println("Method was given:" +nl+
+                "Length: "+ogLength+nl+
+                "Text: "+text+nl+
+                "Max chars per line: "+maxCharsPerLine
+        );
+        */
+
+        // appends last line (since that is always missed by above loop)
+        char[] lineChars = new char[charList.size()];
+        for (int x = 0; x < charList.size(); x++) {
+            lineChars[x] = charList.get(x);
+        }
+        adjustedText.add(new String(lineChars));
+
+        // returns
+        String output = "";
+        for (int i = 0; i < adjustedText.size(); i++) {
+            output += adjustedText.get(i);
+        }
+        return output;
     }
 
 }

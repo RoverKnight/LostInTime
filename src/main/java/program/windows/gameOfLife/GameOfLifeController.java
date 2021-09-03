@@ -1,16 +1,15 @@
-package program.windows.test;
+package program.windows.gameOfLife;
 
 import program.MasterController;
-import program.windows.clock.ClockView;
 
 /**
  * Thread class - for testing & copy/pasting purposes
  */
-public class TestController extends MasterController {
+public class GameOfLifeController extends MasterController {
 
-    TestView gui;
+    GameOfLifeView gui;
 
-    public TestController(TestView gui) {
+    public GameOfLifeController(GameOfLifeView gui) {
         this.gui = gui;
     }
 

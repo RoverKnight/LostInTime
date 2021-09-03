@@ -1,5 +1,7 @@
 package program.windows.fileEditor;
 
+import program.MasterView;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,5 +33,8 @@ public class FileEditorListener implements ActionListener {
         else if (source == gui.loadButton) {
             FileEditorInternal.load();
         }
+
+        String currentText = gui.getContentWOutLineBreaks();
+        gui.writeToContent(currentText);
     }
 }

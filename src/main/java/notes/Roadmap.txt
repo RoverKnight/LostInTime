@@ -5,10 +5,11 @@ IDEAS:
 - Implement methods to move/scale group of elements as one (e.g. a numpad)
 - Implement input-error finder for file writer, which determines what part
   of the inputs caused an IO exception, then tells user
+- Tic Tac Toe
+- Implement Conways Game of Life w/ graphics
 
 IMPLEMENTATIONS TO DO:
 TODO: add lap, log functionality to timer
-TODO: implement file writer functionality
 TODO: implement scroll bar for file content to file writer
 TODO: (for file content @ file writer) implement automatic line break
       when edge is reached (or alternatively a horizontal scroll bar,
@@ -20,11 +21,9 @@ FIXES/REWORKS TO DO:
 TODO: remove parameter for window internal from listener (all methods
       in internal classes are static, so there's no need for an
       instance of the internal)
-TODO? remove FileWriterController(), since file writer window has no
-      actions that need time control (?)
 TODO: fix rng status label not updating when generating number
+TODO: fix convertWithLineBreaks() not adding line breaks when a line
+      break has been placed in the previous line
 
 TASKS DONE (TODAY):
-- 29/09 - x
-- 29/09 - x
-- 29/09 - x
+- 03/09 - x

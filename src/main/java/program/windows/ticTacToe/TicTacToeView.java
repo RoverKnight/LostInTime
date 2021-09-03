@@ -1,18 +1,17 @@
-package program.windows.test;
+package program.windows.ticTacToe;
 
 import program.MasterView;
 import program.styles.StyledButtonUI;
 
 import javax.swing.*;
 import javax.swing.plaf.ButtonUI;
-import java.awt.*;
 
 /**
  * Graphical interface class - for testing & copy/pasting purposes
  */
-public class TestView extends MasterView {
+public class TicTacToeView extends MasterView {
 
-    TestListener listener;
+    TicTacToeListener listener;
 
     // sets up style vars
     ButtonUI buttonUI;
@@ -22,19 +21,20 @@ public class TestView extends MasterView {
     JButton testButton;
     JTextField testInputField;
 
-    public TestView() {
-        super("LostInTime - Test");
+    public TicTacToeView() {
+        super("LostInTime - Tic Tac Toe");
 
         // creates the listener instance
-        listener = new TestListener(this);
+        listener = new TicTacToeListener(this);
 
         // assigns styles to vars
         buttonUI = new StyledButtonUI();
 
         // sets general window settings (e.g. size, layout)
         setLayout(null);
-        setCenteredFrameBounds(this, 700, 500);
+        setCenteredFrameBounds(this, 700, 450);
         setStandardBackground(this);
+        usableHeight = getUsableHeight();
 
         // self-explanatory
         createGUI();
@@ -62,9 +62,11 @@ public class TestView extends MasterView {
         };
 
         // sizes/positions elements
-        setBoundsByCC(testLabel, 350, 235, 400, 100);
-        setBoundsByBL(testButton, 0, 500, 100, 50);
-        setBoundsByBL(testInputField, 100, 500, 200, 50);
+        int midY = usableHeight / 2;
+
+        setBoundsByCC(testLabel, 350, midY, 400, 100);
+        setBoundsByBL(testButton, 0, 450, 100, 50);
+        setBoundsByBL(testInputField, 100, 450, 200, 50);
 
         // styles / adds listeners to / adds gui elements
         for (JButton button : buttons) {

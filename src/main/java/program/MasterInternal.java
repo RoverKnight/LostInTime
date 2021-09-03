@@ -1,15 +1,11 @@
 package program;
 
-import program.windows.clock.ClockInternal;
 import program.windows.clock.ClockView;
-import program.windows.fileEditor.FileEditorInternal;
 import program.windows.fileEditor.FileEditorView;
-import program.windows.randomNumberGenerator.RngInternal;
 import program.windows.randomNumberGenerator.RngView;
 import program.windows.shutdownConfirm.ShutdownConfirmView;
-import program.windows.test.TestInternal;
-import program.windows.test.TestView;
-import program.windows.timer.TimerInternal;
+import program.windows.gameOfLife.GameOfLifeView;
+import program.windows.ticTacToe.TicTacToeView;
 import program.windows.timer.TimerView;
 
 /**
@@ -34,28 +30,30 @@ public class MasterInternal {
     public static void loadWindow (String windowType) throws IllegalArgumentException {
         MasterView oldWindow = MasterView.activeWindow;
         if (windowType.equalsIgnoreCase("clock")) {
-            ClockInternal i = new ClockInternal();
-            new ClockView(i);
+            new ClockView();
         }
         else if (windowType.equalsIgnoreCase("timer")) {
-            TimerInternal i = new TimerInternal();
-            new TimerView(i);
+            new TimerView();
         }
         else if (windowType.equalsIgnoreCase("shutdownConfirmation")) {
-            // no internal needed because there's only 2 actions to handle
             new ShutdownConfirmView();
-            return; // prevents oldWindow from being set to invisible
+            /*
+            returning prevents current window from being set to invisible, so
+            the shutdownConfirm window can be open whilst program can still function
+             */
+            return;
         }
         else if (windowType.equalsIgnoreCase("rng")) {
-            RngInternal i = new RngInternal();
-            new RngView(i);
+            new RngView();
         }
-        else if (windowType.equalsIgnoreCase("test")) {
-            new TestView();
+        else if (windowType.equalsIgnoreCase("game of life")) {
+            new GameOfLifeView();
         }
         else if (windowType.equalsIgnoreCase("file editor")) {
-            FileEditorInternal i = new FileEditorInternal();
-            new FileEditorView(i);
+            new FileEditorView();
+        }
+        else if (windowType.equalsIgnoreCase("tic tac toe")) {
+            new TicTacToeView();
         }
         else throw new IllegalArgumentException("Window name wrong or not registered");
 

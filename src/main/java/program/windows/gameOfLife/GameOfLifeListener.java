@@ -1,7 +1,4 @@
-package program.windows.test;
-
-import program.windows.clock.ClockInternal;
-import program.windows.clock.ClockView;
+package program.windows.gameOfLife;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,11 +6,11 @@ import java.awt.event.ActionListener;
 /**
  * Listener class - for testing & copy/pasting purposes
  */
-public class TestListener implements ActionListener {
+public class GameOfLifeListener implements ActionListener {
 
-    TestView gui;
+    GameOfLifeView gui;
 
-    public TestListener(TestView gui) {
+    public GameOfLifeListener(GameOfLifeView gui) {
         this.gui = gui;
     }
 
@@ -26,7 +23,7 @@ public class TestListener implements ActionListener {
 
         // source specific code
         if (source == gui.testButton) {
-            TestInternal.test();
+            GameOfLifeInternal.test();
         }
 
         // updates GUI (important!!!)

@@ -28,12 +28,8 @@ public class FileEditorView extends MasterView {
     JTextArea fileContentTextArea;
     JTextArea consoleFeedbackTextArea;
 
-    public FileEditorView(FileEditorInternal internal) {
-        super("LostInTime - File Writer");
-
-        // assigns internal & gives it reference to this frame
-        i = internal;
-        i.gui = this;
+    public FileEditorView() {
+        super("LostInTime - File Editor");
 
         // creates the listener instance
         listener = new FileEditorListener(this, i);
@@ -43,7 +39,7 @@ public class FileEditorView extends MasterView {
 
         // sets general window settings (e.g. size, layout)
         setLayout(null);
-        setCenteredFrameBounds(this, 700, 500);
+        setCenteredFrameBounds(this, 700, 450);
         setStandardBackground(this);
 
         // self-explanatory
@@ -76,14 +72,14 @@ public class FileEditorView extends MasterView {
         };
 
         // sizes/positions elements
-        setBoundsByTL(filePathTextField,50, 50, 600, 25);
-        setBoundsByTL(fileNameTextField,50, 100, 200, 25);
-        setBoundsByTL(fileSuffixTextField,50, 150, 200, 25);
-        setBoundsByTL(fileContentTextArea,275,100,375,300);
-        setBoundsByTL(consoleFeedbackTextArea,50,425,600,50);
+        setBoundsByTL(filePathTextField,50, 25, 600, 25);
+        setBoundsByTL(fileNameTextField,50, 75, 200, 25);
+        setBoundsByTL(fileSuffixTextField,50, 125, 200, 25);
+        setBoundsByTL(fileContentTextArea,275,75,375,275);
+        setBoundsByTL(consoleFeedbackTextArea,50,375,600,50);
 
-        setBoundsByBL(saveButton, 50, 400, 100, 50);
-        setBoundsByBL(loadButton, 150, 400, 100, 50);
+        setBoundsByBL(saveButton, 50, 350, 100, 50);
+        setBoundsByBL(loadButton, 150, 350, 100, 50);
 
         // styles / adds listeners to / adds gui elements
         for (JButton button : buttons) {
@@ -105,7 +101,24 @@ public class FileEditorView extends MasterView {
         setVisible(true);
     }
 
-    public void writeToConsole (String text) {
-        consoleFeedbackTextArea.setText(text);
+    public void writeToConsole (String text) { // console can hold 75 monospace chars per line
+        //System.out.println("(Console)");
+        consoleFeedbackTextArea.setText(FileEditorInternal.convertWithLineBreaks(text, 75));
     }
+
+    public void writeToContent (String text) { // content box can hold 46 monospace chars per line
+        //System.out.println("(File)");
+        fileContentTextArea.setText(FileEditorInternal.convertWithLineBreaks(text, 45));
+    }
+
+    public String getContentWOutLineBreaks () {
+        char[] characters = fileContentTextArea.getText().toCharArray();
+        for (char character : characters) {
+            if (character == 10) character = 32;
+        }
+
+        return new String(characters);
+    }
+
+
 }

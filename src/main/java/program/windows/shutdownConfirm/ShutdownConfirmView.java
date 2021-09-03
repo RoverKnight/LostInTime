@@ -30,7 +30,7 @@ public class ShutdownConfirmView extends MasterView {
 
         // determines window size/layout
         setLayout(null);
-        setCenteredFrameBounds(this, 360, 140);
+        setCenteredFrameBounds(this, 360, 110);
         setStandardBackground(this);
 
         // creates gui
@@ -51,9 +51,9 @@ public class ShutdownConfirmView extends MasterView {
 
         // determines size/position of all gui elements
         int midX = getWidth() / 2;
-        setBoundsByCC(questionLabel,         midX, 34, 250, 50);
-        setBoundsByTL(shutdownConfirmButton, midX, 65, 150, 50);
-        setBoundsByTR(goBackButton,          midX, 65, 150, 50);
+        setBoundsByCC(questionLabel,         midX, 5, 250, 50);
+        setBoundsByTL(shutdownConfirmButton, midX, 35, 150, 50);
+        setBoundsByTR(goBackButton,          midX, 35, 150, 50);
 
         // sets up styles for gui elements
         ButtonUI buttonUI = new StyledButtonUI();

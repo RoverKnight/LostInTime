@@ -53,3 +53,22 @@
           able to function as a bare-bone text file creator/editor (note that only
           the GUI has been implemented so far, there is no functionality yet)
 
+- 03/09 - Removed internal parameter from all view constructors
+- 03/09 - Added tbo (topBarOffset) to MasterView & replaced usage
+          of oso in setBoundsBy[...] & setCenteredFrameBounds with
+          tbo, so that any positioning done in window-views is
+          relative to bottom line of top GUI bar given by
+          MasterView.addGeneralGUI()
+- 03/09 - Added MasterView.getUsableHeight() to retrieve a given
+          windows height available for gui elements
+- 03/09 - Appropriated access modifiers of methods and vars in
+          MasterView()
+- 03/09 - Adjusted all views to new tbo implementation (since
+          everything was moved down by tbo)
+- 03/09 - Added auto-line-break method
+          FileEditorInternal.convertWithLineBreaks() (holy fuck
+          that was complicated) and implemented it in
+          FileEditorView.writeToConsole()
+- 03/09 - Implemented convertWithLineBreaks() to file content
+- 03/09 - Fixed new line break being added to file content every
+          time load button is clicked

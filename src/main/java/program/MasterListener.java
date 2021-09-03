@@ -47,8 +47,11 @@ public class MasterListener implements ActionListener {
         else if (sourceName.equalsIgnoreCase("File Editor")) {
             MasterInternal.loadWindow("file editor");
         }
-        else if (sourceName.equalsIgnoreCase("Test")) {
-            MasterInternal.loadWindow("test");
+        else if (sourceName.equalsIgnoreCase("game of life")) {
+            MasterInternal.loadWindow("game of life");
+        }
+        else if (sourceName.equalsIgnoreCase("Tic Tac Toe")) {
+            MasterInternal.loadWindow("tic tac toe");
         }
     }
 }

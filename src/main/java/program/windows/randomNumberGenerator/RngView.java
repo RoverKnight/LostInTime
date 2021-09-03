@@ -18,7 +18,6 @@ public class RngView extends MasterView {
     ButtonUI buttonUI;
 
     // sets up vars for gui elements
-    JButton testButton;
     JLabel resultLabel;
     JLabel statusLabel;
     JButton generateNumberButton;
@@ -26,12 +25,8 @@ public class RngView extends MasterView {
     JTextField highBoundInputField;
     JTextField keyInputField;
 
-    public RngView(RngInternal internal) {
+    public RngView() {
         super("LostInTime - Random Number Generator");
-
-        // assigns internal & gives it reference to this frame
-        i = internal;
-        i.gui = this;
 
         // creates the listener instance
         listener = new RngListener(this, i);
@@ -41,7 +36,7 @@ public class RngView extends MasterView {
 
         // sets general window settings (e.g. size, layout)
         setLayout(null);
-        setCenteredFrameBounds(this, 700, 500);
+        setCenteredFrameBounds(this, 700, 450);
         setStandardBackground(this);
 
         // self-explanatory
@@ -54,8 +49,6 @@ public class RngView extends MasterView {
 
     public void createGUI () {
         // creates gui elements, assigns to vars
-        testButton = new JButton("Test");
-
         resultLabel = new JLabel("Result: n/a");
         statusLabel = new JLabel("Status: Inactive");
         generateNumberButton = new JButton("Generate number");
@@ -68,7 +61,7 @@ public class RngView extends MasterView {
                 resultLabel, statusLabel
         };
         JButton[] buttons = {
-                testButton, generateNumberButton
+                generateNumberButton
         };
         JTextField[] inputFields = {
                 lowBoundInputField, highBoundInputField,
@@ -76,14 +69,12 @@ public class RngView extends MasterView {
         };
 
         // sizes/positions elements
-        setBoundsByBL(testButton, 0, 500, 100, 50);
-
-        setBoundsByTR(resultLabel, 650, 200, 300, 50);
-        setBoundsByTR(statusLabel,          650, 100, 300, 50);
-        setBoundsByTL(generateNumberButton, 100, 400, 200, 50);
-        setBoundsByTL(lowBoundInputField,   100, 100, 200, 50);
-        setBoundsByTL(highBoundInputField,  100, 200, 200, 50);
-        setBoundsByTL(keyInputField,        100, 300, 200, 50);
+        setBoundsByTR(resultLabel, 650, 150, 300, 50);
+        setBoundsByTR(statusLabel,          650, 50, 300, 50);
+        setBoundsByTL(generateNumberButton, 50, 350, 200, 50);
+        setBoundsByTL(lowBoundInputField,   50, 50, 200, 50);
+        setBoundsByTL(highBoundInputField,  50, 150, 200, 50);
+        setBoundsByTL(keyInputField,        50, 250, 200, 50);
 
 
         // styles / adds listeners to / adds gui elements

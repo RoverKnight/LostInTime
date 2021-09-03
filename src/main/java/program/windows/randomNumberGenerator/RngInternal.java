@@ -38,16 +38,16 @@ public class RngInternal {
     public static int[] getInputs (RngView gui) throws NumberFormatException, InvalidRangeException, InvalidKeyException {
         int lowBound;
         int highBound;
+        int key;
         long keyL; // uses long here to catch if user entered key w/ more than 6 digits, as detecting this fails
                    // if entered number has way too many digits
+        keyL = Integer.parseInt(gui.keyInputField.getText());
+        if (keyL > 999999) throw new InvalidKeyException();
+        key = (int) keyL;
+
         lowBound = Integer.parseInt(gui.lowBoundInputField.getText());
         highBound = Integer.parseInt(gui.highBoundInputField.getText());
         if (lowBound >= highBound) throw new InvalidRangeException();
-
-        keyL = Integer.parseInt(gui.keyInputField.getText());
-        if (keyL > 999999) throw new InvalidKeyException();
-
-        int key = (int) keyL;
 
         return new int[] {lowBound, highBound, key};
     }

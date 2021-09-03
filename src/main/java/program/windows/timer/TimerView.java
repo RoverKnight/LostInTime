@@ -30,12 +30,8 @@ public class TimerView extends MasterView {
     JButton resumeButton;
 
 
-    public TimerView(TimerInternal internal) {
+    public TimerView () {
         super("LostInTime - Timer");
-
-        // assigns internal & gives it reference to this frame
-        i = internal;
-        i.gui = this;
 
         // creates the listener instance
         listener = new TimerListener(this, i);
@@ -45,8 +41,9 @@ public class TimerView extends MasterView {
 
         // sets general window settings (e.g. size, layout)
         setLayout(null);
-        setCenteredFrameBounds(this, 700, 500);
+        setCenteredFrameBounds(this, 700, 450);
         setStandardBackground(this);
+        usableHeight = getUsableHeight();
 
         // self-explanatory
         createGUI();
@@ -75,12 +72,14 @@ public class TimerView extends MasterView {
         };
 
         // sizes/positions elements
-        setBoundsByCC(timerLabel, 350, 235, 400, 100);
-        setBoundsByBL(testButton, 0, 500, 100, 50);
-        setBoundsByTR(startButton, 350, 275, 100, 50);
-        setBoundsByTL(stopButton, 350, 275, 100, 50);
-        setBoundsByTR(resetButton, 350, 275, 100, 50);
-        setBoundsByTL(resumeButton, 350, 275, 100, 50);
+        int midY = usableHeight / 2;
+
+        setBoundsByCC(timerLabel, 350, midY - 15, 400, 100);
+        setBoundsByBL(testButton, 0, 450, 100, 50);
+        setBoundsByTR(startButton, 350, midY + 25, 100, 50);
+        setBoundsByTL(stopButton, 350, midY + 25, 100, 50);
+        setBoundsByTR(resetButton, 350, midY + 25, 100, 50);
+        setBoundsByTL(resumeButton, 350, midY + 25, 100, 50);
 
         // styles / adds listeners to / adds gui elements
         for (JButton button : buttons) {
