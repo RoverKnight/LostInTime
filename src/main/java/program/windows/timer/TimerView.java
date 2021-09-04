@@ -16,9 +16,6 @@ public class TimerView extends MasterView {
     TimerListener listener;
     TimerInternal i;
 
-    // sets up style vars
-    ButtonUI buttonUI;
-
     // sets up vars for gui elements
     JLabel timerLabel;
     JButton testButton;
@@ -35,9 +32,6 @@ public class TimerView extends MasterView {
 
         // creates the listener instance
         listener = new TimerListener(this, i);
-
-        // assigns styles to vars
-        buttonUI = new StyledButtonUI();
 
         // sets general window settings (e.g. size, layout)
         setLayout(null);
@@ -83,7 +77,7 @@ public class TimerView extends MasterView {
 
         // styles / adds listeners to / adds gui elements
         for (JButton button : buttons) {
-            button.setUI(buttonUI);
+            button.setUI(standardButtonUI);
             button.addActionListener(listener);
             add(button);
         }

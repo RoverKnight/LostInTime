@@ -13,9 +13,6 @@ public class FileEditorView extends MasterView {
 
     FileEditorListener listener;
 
-    // sets up style vars
-    ButtonUI buttonUI;
-
     // sets up vars for gui elements
     JButton saveButton;
     JButton loadButton;
@@ -32,9 +29,6 @@ public class FileEditorView extends MasterView {
 
         // creates the listener instance
         listener = new FileEditorListener(this);
-
-        // assigns styles to vars
-        buttonUI = new StyledButtonUI();
 
         // sets general window settings (e.g. size, layout)
         setLayout(null);
@@ -82,7 +76,7 @@ public class FileEditorView extends MasterView {
 
         // styles / adds listeners to / adds gui elements
         for (JButton button : buttons) {
-            button.setUI(buttonUI);
+            button.setUI(standardButtonUI);
             button.addActionListener(listener);
             add(button);
         }

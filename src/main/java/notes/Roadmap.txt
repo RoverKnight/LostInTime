@@ -34,8 +34,10 @@ TASKS DONE (TODAY):
           convertWithLineBreaks()
 - 04/09 - implemented line breaks being added while typing
 - 04/09 - optimized file editor code
-- 04/09 - x
-- 04/09 - x
+- 04/09 - moved ClockView methods to ClockInternal & removed unnecessary
+          methods
+- 04/09 - removed ClockListener, since clock window has no elements that
+          need a listener
 - 04/09 - x
 - 04/09 - x
 - 04/09 - x

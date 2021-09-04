@@ -36,19 +36,22 @@ public class MasterView extends Frame {
 
     protected int usableHeight;
 
+    protected static ButtonUI standardButtonUI = new StyledButtonUI();
+    protected ButtonUI customButtonUI;
+
     public static boolean shutdownWindowActive = false;
 
     public MasterController controller;
 
     // Fonts for use mostly in subclasses
-    protected Font ubuntuMonoB40 = new Font("Ubuntu Mono", Font.BOLD, 40);
-    protected Font ubuntuMonoB35 = new Font("Ubuntu Mono", Font.BOLD, 35);
-    protected Font ubuntuMonoB30 = new Font("Ubuntu Mono", Font.BOLD, 30);
-    protected Font ubuntuMonoB25 = new Font("Ubuntu Mono", Font.BOLD, 25);
-    protected Font ubuntuMonoB20 = new Font("Ubuntu Mono", Font.BOLD, 20);
-    protected Font ubuntuMonoB15 = new Font("Ubuntu Mono", Font.BOLD, 15);
-    protected Font ubuntuMonoB10 = new Font("Ubuntu Mono", Font.BOLD, 10);
-    protected Font ubuntuMonoI15 = new Font("Ubuntu Mono", Font.ITALIC, 15);
+    protected static Font ubuntuMonoB40 = new Font("Ubuntu Mono", Font.BOLD, 40);
+    protected static Font ubuntuMonoB35 = new Font("Ubuntu Mono", Font.BOLD, 35);
+    protected static Font ubuntuMonoB30 = new Font("Ubuntu Mono", Font.BOLD, 30);
+    protected static Font ubuntuMonoB25 = new Font("Ubuntu Mono", Font.BOLD, 25);
+    protected static Font ubuntuMonoB20 = new Font("Ubuntu Mono", Font.BOLD, 20);
+    protected static Font ubuntuMonoB15 = new Font("Ubuntu Mono", Font.BOLD, 15);
+    protected static Font ubuntuMonoB10 = new Font("Ubuntu Mono", Font.BOLD, 10);
+    protected static Font ubuntuMonoI15 = new Font("Ubuntu Mono", Font.ITALIC, 15);
 
     public static MasterView activeWindow;
 
@@ -68,7 +71,6 @@ public class MasterView extends Frame {
 
         // sets up reference variables
         MasterListener listener = new MasterListener(gui);
-        ButtonUI buttonUI = new StyledButtonUI();
 
         // creates GUI elements
         JButton shutdownButton = new JButton("Shut down");
@@ -98,7 +100,7 @@ public class MasterView extends Frame {
 
         for (JButton button : buttons) {
             button.addActionListener(listener);
-            button.setUI(buttonUI);
+            button.setUI(standardButtonUI);
             gui.add(button);
         }
     }

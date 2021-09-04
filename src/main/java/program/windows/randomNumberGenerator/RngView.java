@@ -14,9 +14,6 @@ public class RngView extends MasterView {
     RngListener listener;
     RngInternal i;
 
-    // sets up style vars
-    ButtonUI buttonUI;
-
     // sets up vars for gui elements
     JLabel resultLabel;
     JLabel statusLabel;
@@ -30,9 +27,6 @@ public class RngView extends MasterView {
 
         // creates the listener instance
         listener = new RngListener(this, i);
-
-        // assigns styles to vars
-        buttonUI = new StyledButtonUI();
 
         // sets general window settings (e.g. size, layout)
         setLayout(null);
@@ -83,7 +77,7 @@ public class RngView extends MasterView {
             add(label);
         }
         for (JButton button : buttons) {
-            button.setUI(buttonUI);
+            button.setUI(standardButtonUI);
             button.addActionListener(listener);
             add(button);
         }

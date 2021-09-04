@@ -1,10 +1,8 @@
 package program.windows.ticTacToe;
 
 import program.MasterView;
-import program.styles.StyledButtonUI;
 
 import javax.swing.*;
-import javax.swing.plaf.ButtonUI;
 
 /**
  * Graphical interface class - for testing & copy/pasting purposes
@@ -12,9 +10,6 @@ import javax.swing.plaf.ButtonUI;
 public class TicTacToeView extends MasterView {
 
     TicTacToeListener listener;
-
-    // sets up style vars
-    ButtonUI buttonUI;
 
     // sets up vars for gui elements
     JLabel testLabel;
@@ -26,9 +21,6 @@ public class TicTacToeView extends MasterView {
 
         // creates the listener instance
         listener = new TicTacToeListener(this);
-
-        // assigns styles to vars
-        buttonUI = new StyledButtonUI();
 
         // sets general window settings (e.g. size, layout)
         setLayout(null);
@@ -70,7 +62,7 @@ public class TicTacToeView extends MasterView {
 
         // styles / adds listeners to / adds gui elements
         for (JButton button : buttons) {
-            button.setUI(buttonUI);
+            button.setUI(standardButtonUI);
             button.addActionListener(listener);
             add(button);
         }
@@ -90,15 +82,6 @@ public class TicTacToeView extends MasterView {
     }
 
     public void updateGUI () {
-        updateResponsiveGUI();
-        updateTimedGUI();
-    }
-
-    public void updateResponsiveGUI () {
-
-    }
-
-    public void updateTimedGUI () {
 
     }
 }

@@ -13,9 +13,6 @@ public class GameOfLifeView extends MasterView {
 
     GameOfLifeListener listener;
 
-    // sets up style vars
-    ButtonUI buttonUI;
-
     // sets up vars for gui elements
     JLabel testLabel;
     JButton testButton;
@@ -26,9 +23,6 @@ public class GameOfLifeView extends MasterView {
 
         // creates the listener instance
         listener = new GameOfLifeListener(this);
-
-        // assigns styles to vars
-        buttonUI = new StyledButtonUI();
 
         // sets general window settings (e.g. size, layout)
         setLayout(null);
@@ -70,7 +64,7 @@ public class GameOfLifeView extends MasterView {
 
         // styles / adds listeners to / adds gui elements
         for (JButton button : buttons) {
-            button.setUI(buttonUI);
+            button.setUI(standardButtonUI);
             button.addActionListener(listener);
             add(button);
         }

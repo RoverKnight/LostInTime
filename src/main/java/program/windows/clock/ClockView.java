@@ -11,9 +11,6 @@ import javax.swing.plaf.ButtonUI;
  */
 public class ClockView extends MasterView {
 
-    // sets up style vars
-    ButtonUI buttonUI;
-
     // sets up vars for gui elements
     JLabel clockLabel;
 
@@ -22,9 +19,6 @@ public class ClockView extends MasterView {
 
         // gives internal reference to this frame
         ClockInternal.gui = this;
-
-        // assigns styles to vars
-        buttonUI = new StyledButtonUI();
 
         // sets general window settings (e.g. size, layout)
         setLayout(null);

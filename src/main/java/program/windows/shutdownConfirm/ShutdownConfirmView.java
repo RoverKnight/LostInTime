@@ -55,12 +55,9 @@ public class ShutdownConfirmView extends MasterView {
         setBoundsByTL(shutdownConfirmButton, midX, 35, 150, 50);
         setBoundsByTR(goBackButton,          midX, 35, 150, 50);
 
-        // sets up styles for gui elements
-        ButtonUI buttonUI = new StyledButtonUI();
-
         // styles GUI elements, adds listeners if needed & adds elements to window
         for (JButton button : buttons) {
-            button.setUI(buttonUI);
+            button.setUI(standardButtonUI);
             button.addActionListener(listener);
             add(button);
         }
