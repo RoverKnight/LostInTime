@@ -11,20 +11,14 @@ import javax.swing.plaf.ButtonUI;
  */
 public class ClockView extends MasterView {
 
-    ClockListener listener;
-
     // sets up style vars
     ButtonUI buttonUI;
 
     // sets up vars for gui elements
     JLabel clockLabel;
-    JButton testButton;
 
     public ClockView () {
         super("LostInTime - Clock");
-
-        // creates the listener instance
-        listener = new ClockListener(this);
 
         // gives internal reference to this frame
         ClockInternal.gui = this;
@@ -53,29 +47,22 @@ public class ClockView extends MasterView {
     public void createGUI () {
         // creates gui elements, assigns to vars
         clockLabel = new JLabel("00:00", SwingConstants.CENTER);
-        testButton = new JButton("Test");
 
         // groups some elements to simplify code
-        JButton[] buttons = {
-            testButton
+        JLabel[] labels = {
+                clockLabel
         };
 
         // sizes/positions elements
         int midY = usableHeight / 2;
 
         setBoundsByCC(clockLabel, 350, midY-15, 400, 100);
-        setBoundsByBL(testButton, 0, 450, 100, 50);
 
-        // styles / adds listeners to / adds gui elements
-        for (JButton button : buttons) {
-            button.setUI(buttonUI);
-            button.addActionListener(listener);
-            add(button);
+        // styles / adds gui elements
+        for (JLabel label : labels) {
+            label.setFont(ubuntuMonoB40);
+            add(label);
         }
-        clockLabel.setFont(ubuntuMonoB40);
-
-        add(clockLabel);
-        add(testButton);
 
         // adds general GUI, updates GUI & makes window visible
         addGeneralGUI(this);
