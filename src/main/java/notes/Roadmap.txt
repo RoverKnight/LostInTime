@@ -21,9 +21,6 @@ TODO: separately store file content with intended line breaks/spaces
       so that final file isn't limited to being 75 chars wide
 
 FIXES/REWORKS TO DO:
-TODO: remove parameter for window internal from listener (all methods
-      in internal classes are static, so there's no need for an
-      instance of the internal)
 TODO: fix rng status label not updating when generating number
 
 TASKS DONE (TODAY):
@@ -41,6 +38,6 @@ TASKS DONE (TODAY):
 - 04/09 - Centralized default buttonUI in MasterView as standardButtonUI
           and added instance variable customButtonUI for windows that
           prefer using a non-default buttonUI
-- 04/09 - x
+- 04/09 - Removed -Internal parameters from all -Listener constructors
 - 04/09 - x
 - 04/09 - x
