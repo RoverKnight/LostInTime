@@ -5,13 +5,11 @@ import program.styles.StyledButtonUI;
 
 import javax.swing.*;
 import javax.swing.plaf.ButtonUI;
-import java.util.Calendar;
 
 /**
  *
  */
 public class ClockView extends MasterView {
-    static int lastMinuteValue;
 
     ClockListener listener;
 
@@ -27,6 +25,9 @@ public class ClockView extends MasterView {
 
         // creates the listener instance
         listener = new ClockListener(this);
+
+        // gives internal reference to this frame
+        ClockInternal.gui = this;
 
         // assigns styles to vars
         buttonUI = new StyledButtonUI();
@@ -83,39 +84,6 @@ public class ClockView extends MasterView {
     }
 
     public void updateGUI () {
-        updateResponsiveGUI();
-        updateTimedGUI();
-    }
-
-    public void updateResponsiveGUI () {
-
-    }
-
-    public void updateTimedGUI () {
-        updateClock();
-    }
-
-    public void updateClock () {
-        Calendar cal = Calendar.getInstance();
-        String hour = String.valueOf(cal.get(Calendar.HOUR_OF_DAY));
-        String minute = String.valueOf(cal.get(Calendar.MINUTE));
-        String zero = "0";
-
-        if (hour.length() == 1) hour = zero + hour;
-        if (minute.length() == 1) minute = zero + minute;
-
-        String time = hour + ":" + minute;
-        clockLabel.setText(time);
-    }
-
-    public boolean clockWasBehind() {
-        Calendar cal = Calendar.getInstance();
-        int currentMinute = cal.get(Calendar.MINUTE);
-        if (currentMinute != lastMinuteValue) {
-            updateClock();
-            lastMinuteValue = currentMinute;
-            return true;
-        }
-        else return false;
+        ClockInternal.updateClock();
     }
 }

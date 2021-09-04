@@ -15,7 +15,7 @@ public class ClockController extends MasterController {
         while (!isInterrupted()) {
             // waits for just under a minute if clock was just updated
             // to reduce strain, else waits 1s until clock needs an update
-            if (gui.clockWasBehind()) {
+            if (ClockInternal.clockWasBehind()) {
                 if (isFirstUpdate) {
                     try {
                         Thread.sleep(500);
