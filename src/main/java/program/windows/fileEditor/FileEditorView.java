@@ -32,7 +32,7 @@ public class FileEditorView extends MasterView {
         super("LostInTime - File Editor");
 
         // creates the listener instance
-        listener = new FileEditorListener(this, i);
+        listener = new FileEditorListener(this);
 
         // assigns styles to vars
         buttonUI = new StyledButtonUI();
@@ -93,6 +93,7 @@ public class FileEditorView extends MasterView {
         }
         for (JTextArea textArea : textAreas) {
             textArea.setFont(ubuntuMonoI15);
+            textArea.addKeyListener(listener);
             add(textArea);
         }
 
@@ -102,19 +103,20 @@ public class FileEditorView extends MasterView {
     }
 
     public void writeToConsole (String text) { // console can hold 75 monospace chars per line
-        //System.out.println("(Console)");
-        consoleFeedbackTextArea.setText(FileEditorInternal.convertWithLineBreaks(text, 75));
+        consoleFeedbackTextArea.setText(FileEditorInternal.convertForDisplay(text, 75));
     }
 
     public void writeToContent (String text) { // content box can hold 46 monospace chars per line
-        //System.out.println("(File)");
-        fileContentTextArea.setText(FileEditorInternal.convertWithLineBreaks(text, 45));
+        fileContentTextArea.setText(FileEditorInternal.convertForDisplay(text, 45));
     }
 
     public String getContentWOutLineBreaks () {
         char[] characters = fileContentTextArea.getText().toCharArray();
-        for (char character : characters) {
-            if (character == 10) character = 32;
+
+        for (int i = 0; i < characters.length; i++) {
+            if (characters[i] == 10) {
+                characters[i] = 32;
+            }
         }
 
         return new String(characters);

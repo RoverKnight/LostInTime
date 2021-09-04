@@ -16,14 +16,27 @@ TODO: (for file content @ file writer) implement automatic line break
       additionally a button to switch auto-line-break on/off?)
 TODO? account for OS differences in file writer functionality (specifically
       file pathing in windows)
+TODO: let line breaks be inserted while typing in file content
+TODO: separately store file content with intended line breaks/spaces
+      so that final file isn't limited to being 75 chars wide
 
 FIXES/REWORKS TO DO:
 TODO: remove parameter for window internal from listener (all methods
       in internal classes are static, so there's no need for an
       instance of the internal)
 TODO: fix rng status label not updating when generating number
-TODO: fix convertWithLineBreaks() not adding line breaks when a line
-      break has been placed in the previous line
 
 TASKS DONE (TODAY):
-- 03/09 - x
+- 04/09 - fixed convertWithLineBreaks() not adding line breaks when there
+          is already a line break in the previous line by fetching the
+          content with spaces rather than line-breaks via new method
+          getContentWOutLineBreaks() before processing it with
+          convertWithLineBreaks()
+- 04/09 - implemented line breaks being added while typing
+- 04/09 - x
+- 04/09 - x
+- 04/09 - x
+- 04/09 - x
+- 04/09 - x
+- 04/09 - x
+- 04/09 - x

@@ -4,20 +4,31 @@ import program.MasterView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  *
  */
-public class FileEditorListener implements ActionListener {
+public class FileEditorListener implements ActionListener, KeyListener {
 
     FileEditorView gui;
-    FileEditorInternal i;
 
-    public FileEditorListener(FileEditorView gui, FileEditorInternal internal) {
+    public FileEditorListener(FileEditorView gui) {
         this.gui = gui;
-        i = internal;
-        i.gui = gui;
+        FileEditorInternal.gui = gui;
     }
+
+
+    // updates content display every time a key is typed
+    public void keyTyped (KeyEvent e) {
+        FileEditorInternal.updateContentDisplay();
+    }
+
+    // just here because keyListener interface needs it
+    public void keyPressed (KeyEvent e) {}
+    public void keyReleased (KeyEvent e) {}
+
 
     public void actionPerformed (ActionEvent e) {
         // gets event source
@@ -34,7 +45,5 @@ public class FileEditorListener implements ActionListener {
             FileEditorInternal.load();
         }
 
-        String currentText = gui.getContentWOutLineBreaks();
-        gui.writeToContent(currentText);
     }
 }

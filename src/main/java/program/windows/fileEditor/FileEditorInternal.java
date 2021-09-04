@@ -99,11 +99,16 @@ public class FileEditorInternal {
         }
     }
 
-    public static String convertWithLineBreaks (String text, int maxCharsPerLine) {
+    public static void updateContentDisplay () {
+        String currentText = gui.getContentWOutLineBreaks();
+        gui.writeToContent(currentText);
+    }
+
+    public static String convertForDisplay (String text, int maxCharsPerLine) {
         char[] charArray = text.toCharArray();
         List<Character> charList = new ArrayList<>();
-        for (int i = 0; i < charArray.length; i++) {
-            charList.add(charArray[i]);
+        for (char c : charArray) {
+            charList.add(c);
         }
         List<String> adjustedText = new ArrayList<>();
 
