@@ -27,7 +27,7 @@ public class TimerListener implements ActionListener {
             controller = TimerInternal.startTimer(controller, gui);
         }
         else if (source == gui.stopButton) {
-            controller = TimerInternal.stopTimer(controller, gui);
+            TimerInternal.stopTimer(controller, gui);
         }
         else if (source == gui.resetButton) {
             TimerInternal.resetTimer(gui);

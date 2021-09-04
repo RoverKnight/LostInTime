@@ -9,12 +9,11 @@ public class TimerInternal {
     public TimerView gui;
 
     /**
-     *
-     * @param controller The timer (i.e. timer) internal to be started.
+     * @param controller The timer internal to be started.
      * @param gui The window in which the timer/timer shall act.
-     * @return TimerController, should be assigned to a class' own timer
+     * @return The now active controller (should be assigned to a class' own timer
      * field, so that stopTimer() and similar methods do not throw
-     * NullPointerException.
+     * NullPointerExceptions).
      */
     public static TimerController startTimer (TimerController controller, TimerView gui) {
         if (controller == null || !controller.isAlive()) {
@@ -29,16 +28,18 @@ public class TimerInternal {
         }
     }
 
-    public static TimerController stopTimer (TimerController controller, TimerView gui) {
+    public static void stopTimer (TimerController controller, TimerView gui) {
         while (controller.isAlive()) {
             controller.interrupt();
         }
-
-        //gui.switchStopResumeButtons();
-
-        return controller;
     }
 
+    /**
+     * @param gui The window in which the timer/timer shall act.
+     * @return The now active controller (should be assigned to a class' own timer
+     * field, so that stopTimer() and similar methods do not throw
+     * NullPointerExceptions).
+     */
     public static TimerController resumeTimer (TimerView gui) {
         TimerController controller = new TimerController(gui, true);
         controller.start();
