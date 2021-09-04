@@ -13,11 +13,9 @@ import java.awt.event.ActionListener;
 public class ClockListener implements ActionListener {
 
     ClockView gui;
-    ClockInternal i;
 
-    public ClockListener(ClockView gui, ClockInternal internal) {
+    public ClockListener(ClockView gui) {
         this.gui = gui;
-        i = internal;
     }
 
     public void actionPerformed (ActionEvent e) {

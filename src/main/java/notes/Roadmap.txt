@@ -33,7 +33,7 @@ TASKS DONE (TODAY):
           getContentWOutLineBreaks() before processing it with
           convertWithLineBreaks()
 - 04/09 - implemented line breaks being added while typing
-- 04/09 - x
+- 04/09 - optimized file editor code
 - 04/09 - x
 - 04/09 - x
 - 04/09 - x

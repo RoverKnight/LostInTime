@@ -5,7 +5,6 @@ import program.styles.StyledButtonUI;
 
 import javax.swing.*;
 import javax.swing.plaf.ButtonUI;
-import java.awt.*;
 import java.util.Calendar;
 
 /**
@@ -15,7 +14,6 @@ public class ClockView extends MasterView {
     static int lastMinuteValue;
 
     ClockListener listener;
-    ClockInternal i;
 
     // sets up style vars
     ButtonUI buttonUI;
@@ -28,7 +26,7 @@ public class ClockView extends MasterView {
         super("LostInTime - Clock");
 
         // creates the listener instance
-        listener = new ClockListener(this, i);
+        listener = new ClockListener(this);
 
         // assigns styles to vars
         buttonUI = new StyledButtonUI();
