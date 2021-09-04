@@ -76,8 +76,6 @@ public class FileEditorInternal {
     public static void load () {
         // fetches inputs
         String[] inputs = fetchInputs();
-        String fileName = inputs[0];
-        String fileSuffix = inputs[1];
         String fullPath = inputs[2];
 
         // creates file var
@@ -86,11 +84,11 @@ public class FileEditorInternal {
         //
         try {
             Scanner reader = new Scanner(file);
-            String contentStr = "";
+            StringBuilder content = new StringBuilder();
             while (reader.hasNextLine()) {
-                contentStr += reader.nextLine() + System.lineSeparator();
+                content.append(reader.nextLine()).append(System.lineSeparator());
             }
-            gui.fileContentTextArea.setText(contentStr);
+            gui.fileContentTextArea.setText(content.toString());
         } catch (FileNotFoundException e) {
             gui.writeToConsole(
                     "File could not be found. Check if the entered directory, file name and " +
@@ -115,7 +113,6 @@ public class FileEditorInternal {
         int iterationCounter = 0; // used to prevent infinite looping (used in development)
 
         int length = charList.size();
-        int ogLength = length;
 
         // adds line breaks
         while (length > maxCharsPerLine) {
@@ -175,11 +172,11 @@ public class FileEditorInternal {
         adjustedText.add(new String(lineChars));
 
         // returns
-        String output = "";
-        for (int i = 0; i < adjustedText.size(); i++) {
-            output += adjustedText.get(i);
+        StringBuilder output = new StringBuilder();
+        for (String s : adjustedText) {
+            output.append(s);
         }
-        return output;
+        return output.toString();
     }
 
 }

@@ -12,7 +12,6 @@ import javax.swing.plaf.ButtonUI;
 public class FileEditorView extends MasterView {
 
     FileEditorListener listener;
-    FileEditorInternal i;
 
     // sets up style vars
     ButtonUI buttonUI;

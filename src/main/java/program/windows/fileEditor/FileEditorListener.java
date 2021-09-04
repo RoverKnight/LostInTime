@@ -1,7 +1,5 @@
 package program.windows.fileEditor;
 
-import program.MasterView;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -33,9 +31,6 @@ public class FileEditorListener implements ActionListener, KeyListener {
     public void actionPerformed (ActionEvent e) {
         // gets event source
         Object source = e.getSource();
-
-        // gets all text field inputs
-        String inputField = gui.filePathTextField.getText();
 
         // source specific code
         if (source == gui.saveButton) {
