@@ -9,11 +9,9 @@ import java.awt.event.ActionListener;
 public class RngListener implements ActionListener {
 
     RngView gui;
-    RngInternal i;
 
-    public RngListener(RngView gui, RngInternal internal) {
+    public RngListener(RngView gui) {
         this.gui = gui;
-        i = internal;
     }
 
     public void actionPerformed (ActionEvent e) {

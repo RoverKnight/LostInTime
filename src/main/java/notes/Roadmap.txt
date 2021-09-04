@@ -38,7 +38,9 @@ TASKS DONE (TODAY):
           methods
 - 04/09 - removed ClockListener, since clock window has no elements that
           need a listener
-- 04/09 - x
+- 04/09 - Centralized default buttonUI in MasterView as standardButtonUI
+          and added instance variable customButtonUI for windows that
+          prefer using a non-default buttonUI
 - 04/09 - x
 - 04/09 - x
 - 04/09 - x

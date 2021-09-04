@@ -14,7 +14,6 @@ public class TimerView extends MasterView {
 
     // sets up reference vars for listener/internal
     TimerListener listener;
-    TimerInternal i;
 
     // sets up vars for gui elements
     JLabel timerLabel;
@@ -31,7 +30,7 @@ public class TimerView extends MasterView {
         super("LostInTime - Timer");
 
         // creates the listener instance
-        listener = new TimerListener(this, i);
+        listener = new TimerListener(this);
 
         // sets general window settings (e.g. size, layout)
         setLayout(null);

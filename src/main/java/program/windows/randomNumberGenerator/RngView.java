@@ -12,7 +12,6 @@ import javax.swing.plaf.ButtonUI;
 public class RngView extends MasterView {
 
     RngListener listener;
-    RngInternal i;
 
     // sets up vars for gui elements
     JLabel resultLabel;
@@ -26,7 +25,7 @@ public class RngView extends MasterView {
         super("LostInTime - Random Number Generator");
 
         // creates the listener instance
-        listener = new RngListener(this, i);
+        listener = new RngListener(this);
 
         // sets general window settings (e.g. size, layout)
         setLayout(null);

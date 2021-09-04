@@ -9,12 +9,10 @@ import java.awt.event.ActionListener;
 public class TimerListener implements ActionListener {
 
     TimerView gui;
-    TimerInternal i;
     TimerController controller = null;
 
-    public TimerListener(TimerView gui, TimerInternal internal) {
+    public TimerListener(TimerView gui) {
         this.gui = gui;
-        i = internal;
     }
 
     public void actionPerformed (ActionEvent e) {
